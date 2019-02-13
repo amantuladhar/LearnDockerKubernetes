@@ -1,0 +1,24 @@
+title: Learning Docker and Kubernetes
+
+permalink: pretty
+
+defaults:
+  -
+    scope:
+      path: "content/01-docker"
+    values:
+      docker: true
+  - scope:
+      path: "content/02-docker-compose"
+    values:
+      docker-compose: true
+  -
+    scope:
+      path: "content/03-docker-maven-plugin"
+    values:
+      docker-maven-plugin: true
+  -
+    scope:
+      path: "content/04-kubernetes"
+    values:
+      kubernetes: true

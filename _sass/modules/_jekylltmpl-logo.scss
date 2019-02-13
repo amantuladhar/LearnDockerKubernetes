@@ -1,0 +1,44 @@
+/**
+ *
+ * Notes:
+ *
+ * - The printable-crown element is an image that is included when the page is
+ *   printed. It's hidden for the screen media type, where the background image
+ *   is used instead.
+ *
+ * Example Usage:
+ *
+ * <span class="jekylltmpl-logo">
+ *   <img class="jekylltmpl-logo__printable-crown" src="" width="36">
+ *   GOV.UK
+ * </span>
+ */
+
+.jekylltmpl-logo {
+  font-weight: bold;
+  display: inline-block;
+
+  @include screen {
+    background-image: file-url('some.png');
+    background-repeat: no-repeat;
+
+    @include device-pixel-ratio {
+      background-image: file-url('some.png');
+      background-size: 36px 32px;
+    }
+
+    @include media(tablet) {
+      margin-right: 8px;
+      background-position: 0 1px;
+    }
+  }
+}
+
+.jekylltmpl-logo__printable-crown {
+  vertical-align: middle;
+  margin-right: 1px;
+
+  @include screen {
+    visibility: hidden;
+  }
+}
