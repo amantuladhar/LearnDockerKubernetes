@@ -22,3 +22,5 @@ defaults:
       path: "content/04-kubernetes"
     values:
       kubernetes: true
+
+theme: jekyll-theme-leap-day
