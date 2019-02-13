@@ -1,3 +1,5 @@
+Please visit https://github.com/amantuladhar/LearnDockerKubernetes for reading purposes
+
 To Run:
 ```bash
 bundle install
