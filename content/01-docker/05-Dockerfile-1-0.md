@@ -130,5 +130,11 @@ app.jar
 
 * You still can't access the app from outside as you haven't asked docker to export the port the app is listening to.
 
+### ADD
+* `ADD @source @destination`
+* Exactly as COPY
+* Has few features like, archive extractions. (Like extracting arhieve automatically)
+* Best practice is to use `COPY` if you don’t need those additional features.
+
 
 
