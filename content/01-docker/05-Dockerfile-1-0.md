@@ -222,12 +222,70 @@ fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/community/x86_64/APKINDEX.tar.gz
 ...
 ```
 
+### ENTRYPOINT
+* The `ENTRYPOINT` specifies a command that will always be executed when the container starts.
+* Docker has a default `ENTRYPOINT` which is `/bin/sh -c`
+* `ENTRYPOINT ["executable", "param1", "param2"]` is the exec form, preferred and recommended.
+* `ENTRYPOINT command param1 parm2` is a shell form.
+* `ENTRYPOINT` is the runtime insruction, but `RUN`, `ADD` are build time instructions.
+* We can use `--entrypoint` option to override when you run the container.
 
+```dockerfile
+FROM openjdk:8-jre-alpine
+WORKDIR /myApp
+EXPOSE 8080
+RUN apk add --no-cache curl
+COPY ["target/*.jar", "./app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
 
+* Build the image and run the image, without `-it` option.
+* `docker run -p 9090:8080 docker-kubernetes:dockerfile-basics`
+* You app will run, you didn't needed to go inside the container and execute the command yourself.
+* `-p 9090:8080` was added so that you can access your app from host.
 
+### CMD
+* `CMD` also specifies a command that will execute when container starts.
+* The `CMD` specifies the arguments that will be fed to the `ENTRYPOINT`.
+* `CMD ["executable","parameter1","parameter2"]` this is a so called exec form. (Preferred)
+* `CMD command parameter1 parameter2` this a shell form of the instruction.
+* Like `ENTRYPOINT` `CMD` is a runtime instruction as well.
+* You already know how to override the `CMD`, just pass it after the image name when you run the container.
 
+```dockerfile
+FROM openjdk:8-jre-alpine
+WORKDIR /myApp
+EXPOSE 8080
+RUN apk add --no-cache curl
+COPY ["target/*.jar", "./app.jar"]
+ENTRYPOINT ["java", "-jar"]
+CMD ["app.jar"]
+```
+* As you can see, `ENTRYPOINT` defines the command that gets executed when container starts.
+* `CMD` is passing argument to `ENTRYPOINT`.
+* Build and run the app like before. `docker run -p 9090:8080 docker-kubernetes:dockerfile-basics`.
+* Your app will run like before.
 
+---
+#### Overriding CMD
+* `docker run @image `**`@command @arguments`**.
+* `docker run -p 9090:8080 docker-kubernetes:dockerfile-basics `**`test.jar`**.
+* Of course above command won't run because we don't have `test.jar` in our image.
 
+```bash
+➜ docker run -p 9090:8080 docker-kubernetes:dockerfile-basics test.jar
+Error: Unable to access jarfile test.jar
+```
 
+* How about we try to attach container terminal to host terminal using `-it`
+* `docker run -it docker-kubernetes:dockerfile-basics` won't work as this will run the app.
+* `docker run -it docker-kubernetes:dockerfile-basics sh` won't work as it internally run `java -jar sh`.
+* If you really want to attach container terminal to host terminal you need to override the `ENTRYPOINT`.
+* `docker run `**`--entrypoint sh`**`  -it docker-kubernetes:dockerfile-basics`
+
+```bash
+➜ docker run --entrypoint sh  -it docker-kubernetes:dockerfile-basics        
+/myApp # 
+```
 
 
