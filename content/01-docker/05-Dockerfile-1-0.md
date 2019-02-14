@@ -186,6 +186,46 @@ Transfer-Encoding: chunked
 
 ```
 
+### RUN
+* `RUN @command`
+* `RUN` is central executing instruction for `Dockerfile`.
+* `RUN` command will execute a command or list of command in a new layer on top of current image
+* Resulting image will be new base image for subsequent instruction
+* To make your `Dockerfile` more readable and easier to maintain, you can split long or complex `RUN` statements on **multiple lines separating them with a backslash ( `\` )**
+
+---
+* Let's install `curl` in our image. (We will need to use `curl` later)
+* `RUN apk add --no-cache curl`
+
+```dockerfile
+FROM openjdk:8-jre-alpine
+WORKDIR /myApp
+EXPOSE 8080
+RUN apk add --no-cache curl
+COPY ["target/*.jar", "./app.jar"]
+```
+
+* If you build your app now, you will have `curl` command when you run the container.
+* You can test if `curl` exist if you want.
+
+```bash
+➜ docker build . -t docker-kubernetes:dockerfile-basics          
+...
+Step 4/5 : RUN apk add --no-cache curl
+ ---> Running in 883ac8f78866
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/community/x86_64/APKINDEX.tar.gz
+(1/4) Installing nghttp2-libs (1.35.1-r0)
+(2/4) Installing libssh2 (1.8.0-r4)
+(3/4) Installing libcurl (7.63.0-r0)
+(4/4) Installing curl (7.63.0-r0)
+...
+```
+
+
+
+
+
 
 
 
