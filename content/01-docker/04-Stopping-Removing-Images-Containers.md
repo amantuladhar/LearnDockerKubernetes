@@ -1,7 +1,7 @@
 ---
 category: Hands On With Docker Command 
 ---
-# Removing Containers / Images
+# Removing Containers and Images
 
 
 ## Deleting Container

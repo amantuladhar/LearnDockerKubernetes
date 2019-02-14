@@ -1,5 +1,5 @@
 ---
-category: Dockerfile 1.0 
+category: Dockerfile Basics
 ---
 # `Dockerfile` And Basic Instructions
 
@@ -132,9 +132,62 @@ app.jar
 
 ### ADD
 * `ADD @source @destination`
-* Exactly as COPY
+* Exactly as `COPY`
 * Has few features like, archive extractions. (Like extracting arhieve automatically)
 * Best practice is to use `COPY` if you don’t need those additional features.
+
+
+### EXPOSE
+* `EXPOSE @port`
+* `EXPOSE` tells Docker the running container listens on specific network ports. 
+* This acts as a kind of port mapping documentation that can then be used when **publishing the ports**.
+* `EXPOSE` will **not allow** communication via the defined ports to containers outside of the same network or to the host machine. 
+* To allow this to happen you need to publish the ports using `-p` options when running container
+
+```dockerfile
+FROM openjdk:8-jre-alpine
+WORKDIR /myApp
+EXPOSE 8080
+COPY ["target/*.jar", "./app.jar"]
+
+```
+
+### Port Publishing
+* If you want to access your app from the host (outside the container), you need to publish the port container listens to.
+* To do that we have `-p @hostPort:@containerPort` option.
+* `docker run -it `**`-p 9090:8080`**`amantuladhar/docker-kubernetes:dockerfile-basics` 
+* Now you can access you app on **localhost:9090**
+
+```bash
+➜ docker run -it -p 9090:8080 docker-kubernetes:dockerfile-basics
+
+# Running your app inside the container
+/myApp # java -jar app.jar 
+....
+....
+2019-02-14 04:47:05.036  INFO 10 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-14 04:47:05.046  INFO 10 --- [           main] c.e.cloudnative.CloudNativeApplication   : Started CloudNativeApplication in 4.73 seconds (JVM running for 5.685)
+
+```
+* Here's a response that we get when we call `localhost:9090/test`
+
+```bash
+➜ http localhost:9090/test  
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Date: Thu, 14 Feb 2019 04:49:07 GMT
+Transfer-Encoding: chunked
+
+{
+    "app.version": "v1-web",
+    "host.address": "172.17.0.2",
+    "message": "Hello Fellas!!!"
+}
+
+```
+
+
+
 
 
 
