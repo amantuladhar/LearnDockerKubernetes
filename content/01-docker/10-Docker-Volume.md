@@ -37,7 +37,7 @@ category: Docker Volumes
 ---
 * We can also see `docker volume list` to list all volumes.
 * As you can see volume name is big hash at the moment 
-
+* `docker volume create --name @volume-name` to create your volume before hand.
 ---
 
 * If you attach a same volume when runnnig new container you will will still be present.
