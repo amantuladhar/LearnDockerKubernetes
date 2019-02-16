@@ -112,6 +112,7 @@ docker run \
 ---
 
 > * As a exercise you can try to create a application that stores some values in database.
-> * You can use `amantuladhar/docker-kubernetes:v1-db` image. 
-> * App expects that you will set `DB_URL`, which is a full connection URL for mysql. 
+> * You can use `amantuladhar/docker-kubernetes:v1-db` image.
+> * Simple Web App at branch [initial-db](https://github.com/amantuladhar/DockerKubernetesFiles/tree/initial-db)
+> * App expects that you will set `DB_URL`, `DB_USER` and `DB_PASS` environment variable, which is a full connection URL for mysql. 
 
