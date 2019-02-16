@@ -25,6 +25,8 @@ services:                                            # 2
 * `#3` is name of the service (container)
 * `#4` specifies image you want to run.
 
+> If you want to build you app yourself you can find the app in [Spring Simple Web](https://github.com/amantuladhar/DockerKubernetesFiles/tree/compose-initial) branch `compose-initial`.
+ 
 ---
 * You noticed that in compose containers are called **services**.
 * Compose can manage multiple serivices, but for now we are dealing with only one.
