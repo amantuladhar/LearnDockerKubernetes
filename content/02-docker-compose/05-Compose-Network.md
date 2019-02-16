@@ -129,3 +129,119 @@ services:
 } 
 ```
 
+## Web App With Database
+* You now have knowledge of how `docker-compose` and its component works.
+* Let's spin up a real app like scanario instead of mock tests.
+* You can use `amantuladhar/docker-kubernetes:v1-db` image to get the app that tries to connect with database.
+    * This tag expectes three environment variable: `DB_URL`, `DB_USER`, `DB_PASS`.
+* [Web App With Database](https://github.com/amantuladhar/DockerKubernetesFiles/tree/compose-db-initial) branch `compose-db-initial` if you want to build it yourself.
+* Here's a compose file we are initialy working with
+
+```yaml
+version: '3'
+services:
+  myApp:
+    image: amantuladhar/docker-kubernetes:v1-db
+    ports:
+      - 9090:8080
+  myDb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=docker_kubernetes
+    volumes:
+      - "./volume/mysql-compose/:/var/lib/mysql/"
+networks:
+  myNet:
+```
+
+* First step is to add networks on both the **services**. (Or you can use default network).
+
+```yaml
+version: '3'
+services:
+  myApp:
+    image: amantuladhar/docker-kubernetes:v1-db
+    ports:
+      - 9090:8080
+    networks:                                 # 1
+      - myNet                                 # 1
+  myDb:
+    image: mysql:5.7
+    networks:                                 # 1
+      - myNet                                 # 1
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=docker_kubernetes
+    volumes:
+      - "./volume/mysql-compose/:/var/lib/mysql/"
+networks:
+  myNet:
+
+```
+* `#1` added network to our services.
+* If you are using image above, it expected three stuff so that it can successfully connect with database.
+    * `DB_URL` Connection URL
+    * `DB_USER` Database User
+    * `DB_PASS` Database User Password
+
+```yaml
+version: '3'
+services:
+  myApp:
+    image: amantuladhar/docker-kubernetes:v1-db
+    ports:
+      - 9090:8080
+    networks:
+      - myNet
+    environment:                                                       # 1
+      - DB_URL=jdbc:mysql://myDb:3306/docker_kubernetes?useSSL=false   # 2
+      - DB_USER=root                                                   # 2
+      - DB_PASS=password                                               # 2   
+  myDb:
+    image: mysql:5.7
+    networks:
+      - myNet
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=docker_kubernetes
+    volumes:
+      - "./volume/mysql-compose/:/var/lib/mysql/"
+networks:
+  myNet:
+```
+* `#1` Using `environment` property to set our environment variable.
+* `#2` Setting necessary environmenet variables.
+
+---
+
+* If you run the services now you should be able to start your app and run it.
+
+---
+
+## `depends_on`
+* What if in above setting you web app runs first and database only after that.
+* Clearly you app will fail.
+* To minimize such issues `docker-compose` has `depends_on` property that we can use.
+* We can add list of **services** particular service depends on and `docker-compose` will take care of starting them in order.
+* `depends_on` does not wait for `mysql` to be **ready** before starting web only until they have been started. 
+
+
+```yaml
+version: '3'
+services:
+  myApp:
+    image: amantuladhar/docker-kubernetes:v1-db
+...
+...
+    depends_on:
+      - myDb
+  myDb:
+    image: mysql:5.7
+    networks:
+      - myNet
+...
+...
+networks:
+  myNet:
+```
