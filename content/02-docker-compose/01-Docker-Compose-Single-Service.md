@@ -3,7 +3,6 @@ category: Docker Compose
 ---
 # Docker Compose
 
-
 ## What is docker compose?
 * `docker compose` is tool for defining and running complex applications with Docker. 
 * With Compose, we define a **multi-container application** in a single file.

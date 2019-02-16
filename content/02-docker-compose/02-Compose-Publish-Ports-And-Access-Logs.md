@@ -1,5 +1,5 @@
 ---
-category: Docker Compose
+category: Ports and Logs
 ---
 # Publising Ports And Accessing Service Logs
 

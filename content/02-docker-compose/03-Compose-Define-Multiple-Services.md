@@ -1,5 +1,5 @@
 ---
-category: Docker Compose
+category: Multiple Services
 ---
 # Define Multiple Service In Compose File
 

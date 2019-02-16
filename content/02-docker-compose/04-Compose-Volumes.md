@@ -1,5 +1,5 @@
 ---
-category: Docker Compose
+category: Volumes
 ---
 # Docker Compose Volumes
 
