@@ -74,4 +74,44 @@ category: Docker Networks
 * If you do `curl` on `myApp:8080/test` it will work.
 * Docker has builtin DNS servier that converts container name to it's IP.
 
-## Connecting our app with `mysql`
+## `--net=`**`container:name`**
+* `--net` has one more syntax i.e `--net=container:name`.
+* If you use this syntax, you will be able to use `localhost` instead of `containerName` to connect to it.
+* Run the image that has our app like before.
+
+```bash
+➜ docker run \
+         --name=myApp
+         --net=myNet
+         -p 9090:8080
+         -d amantuladhar/docker-kubernetes:dockerfile-basics
+```
+
+* Run the tester again with `container` syntax.
+```bash
+docker run \
+       --name=myTester \
+       --net=container:myApp \
+       -it \
+       amantuladhar/network-tools \
+       sh   
+```
+
+* Test using localhost, and it just works.
+
+```bash
+/ # curl localhost:8080/test | jq .
+{
+  "message": "Hello Fellas!!!",
+  "host.address": "172.23.0.3",
+  "app.version": "v1-web"
+}
+
+```
+
+---
+
+> * As a exercise you can try to create a application that stores some values in database.
+> * You can use `amantuladhar/docker-kubernetes:v1-db` image. 
+> * App expects that you will set `DB_URL`, which is a full connection URL for mysql. 
+
