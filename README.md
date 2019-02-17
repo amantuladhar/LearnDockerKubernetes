@@ -1,4 +1,4 @@
-Please visit https://github.com/amantuladhar/LearnDockerKubernetes for reading purposes
+Please visit https://amantuladhar.github.io/LearnDockerKubernetes/ for website.
 
 To Run:
 ```bash
