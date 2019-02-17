@@ -61,7 +61,7 @@
 {% else %}
 ### Misc
 {% endif %}
-{% for guide in kubernetes_group.items %}
+{% for kubernetes in kubernetes_group.items %}
 - [{{ kubernetes.title }}]({{ kubernetes.url | relative_url }})
 {% endfor %}
 {% endfor %}
