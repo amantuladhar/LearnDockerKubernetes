@@ -66,7 +66,7 @@ category: Docker With Maven Basics
 * It has `<images>` element which allows us to add multiple `<image>`.
 * There are two main elements in the `<image>`:
   * A `<build>` configuration specifying how images are built.
-  * A `<run>` configuration describing how containers should be created and started.
+  * A `<run>` configuration describing how containers should be created and started. Think of this as option that you pass on `docker run` command.
 
 ---
 
