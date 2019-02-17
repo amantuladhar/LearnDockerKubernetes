@@ -39,6 +39,7 @@ User+-----------------> |   Kubernetes   | |
                     +----------------------+
 ```
 
+---
 ## Kubernetes Master
 * As a user we always communicate to `Kubernetes Master`. We will use `kubectl` tool to interact with `Kubernetes Master`.
 * `Kubernetes Master` (Control Plane) has a sub components
@@ -64,6 +65,7 @@ User+-----------------> |   Kubernetes   | |
 +-------------------------------------+
 ``` 
 
+---
 ## Kubernetes Worker
 * `Kubernetes Worker` the run your containerized applications. 
 * The task of running, monitoring, and providing services to your applications is done `Workers`.
@@ -85,6 +87,7 @@ User+-----------------> |   Kubernetes   | |
 
 ```
 
+---
 ## Nodes
 * Within a cloud we can have lots of nodes, which may or may not be on same machine.
 * It is a part of Kubernetes to abstract out these details.
