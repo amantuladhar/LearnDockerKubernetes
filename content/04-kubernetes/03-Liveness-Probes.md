@@ -13,7 +13,7 @@ category: Liveness Probe
 * Kubernetes will periodically execute the probe and restart the container if the probe fails.
 
 ---
-## Configurating Liveness Probe
+## Configuring
 * We can configure `liveness` probe for a container using one of the three method.
   * `HTTP GET probe`:  
     * This performs HTTP GET request on the container’s IP address, a port and path you specify. 
