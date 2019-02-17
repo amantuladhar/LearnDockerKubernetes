@@ -58,6 +58,3 @@ category: Run Command, Restart Polices and HealthCheck
 * We use `<healthCheck>` tag inside `<build>` tag.
 * It has few children tags, which represents the option health check supports.
 * `/test/status-5xx` will throw Internal Server Error after 6h request. So for time being image will be healty and after couple of minutes it will be tagged as unhealthy.
- 
----
-## wait
