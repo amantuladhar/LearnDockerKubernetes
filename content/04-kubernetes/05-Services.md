@@ -51,6 +51,19 @@ spec:
 ## Create a Service
 * You can create a service by using `kubectl create -f svc.yaml`.
 
+```text
+                 +----------------------------------+
++--------+       |          +-----------+           |
+|External+----------------->|  Service  |           |
+| Client |       |          +-----+-----+           |
++--------+       |                |                 |
+                 |    +------------------------+    |
+                 |    |           |            |    |
+                 |  +-v-+       +-v-+        +-v-+  |
+                 |  |Pod|       |Pod|        |Pod|  |
+                 |  +---+       +---+        +---+  |
+                 +----------------------------------+
+```
 ---
 ## Listing the Service
 * To list the services in cluster you use `kubectl get svc`, where `svc` is short form for service.
