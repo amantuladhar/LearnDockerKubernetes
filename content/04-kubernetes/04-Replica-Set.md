@@ -92,7 +92,7 @@ v1-web   3         3         3       44s
 * If you list the running pods, you will see you have three pods running.
 
 ```bash
-➜ k get po
+➜ kubectl get po
 NAME           READY   STATUS    RESTARTS   AGE
 v1-web-8s5zw   1/1     Running   0          3m36s
 v1-web-r9pkw   1/1     Running   0          3m36s
@@ -109,14 +109,14 @@ v1-web-xk9sk   1/1     Running   0          3m36s
 * Using this command you can quickly change the numbe of replicas you want to run.
 
 ```bash
-➜ k scale replicaset --replicas=5 replicaset-matching-label
+➜ kubectl scale rs --replicas=5 v1-web
 ```
 
 ### `kubectl edit`
 * You can also use `kubectl edit rs @rs_name` and edit the yaml template to scale your app.
 
 ```bash
-k edit replicasets.apps replicaset-matching-label
+kubectl edit rs v1-web
 ```
 
 ### `kubectl apply`
@@ -130,7 +130,7 @@ spec:
 * List the pod again, you will see number of running pods will increase.
 
 ```bash
-➜ k get po
+➜ kubectl get po
 NAME           READY   STATUS    RESTARTS   AGE
 v1-web-8s5zw   1/1     Running   0          6m48s
 v1-web-fdnwf   1/1     Running   0          8s
@@ -185,7 +185,7 @@ selector:
 * If you list the running Pod you will see we have 4 pods.
 
 ```bash
-➜ k get pods -L version,env                    
+➜ kubectl get pods -L version,env                    
 NAME           READY   STATUS    RESTARTS   AGE   VERSION   ENV
 v1-web-8s5zw   1/1     Running   0          31m   v1        dev
 v1-web-njbt9   1/1     Running   0          5s    v1        prod
@@ -211,7 +211,7 @@ selector:
 * If we update one of the pod label env to dev now, it won't create new Pod. As updated Pod is still managed by `ReplicaSet` and replicas count match the desired state.
 
 ```bash
-➜ k label po v1-web-6bcgx env=dev --overwrite
+➜ kubectl label po v1-web-6bcgx env=dev --overwrite
 pod/v1-web-6bcgx labeled
 ```
 * Now list the pods.
