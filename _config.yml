@@ -1,7 +1,8 @@
 title: Learning Docker and Kubernetes
 
 permalink: pretty
-
+ga:
+  id: UA-134730319-1
 defaults:
   -
     scope:
