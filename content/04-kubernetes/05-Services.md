@@ -6,7 +6,7 @@ category: Kubernetes Services
 
 * Now we know how to mange Pods using `ReplicaSet`.
 * You know that `ReplicaSet` make sure that desired number of Pods are always alive.
-* One very important thing we should remember is that Pods are disposable, they should be easily replacable.
+* One very important thing we should remember is that Pods are disposable, they should be easily replaceable.
 * Another thing we need to remember is that, there can be multiple Pods that serves the same content.
 * How do we keep tract of Pods IP. Pods can scale up / down, how to know new IP of pods when they are added.
 * If Pods is unhealthy, they are replaced. They may or may not get the same IP.
