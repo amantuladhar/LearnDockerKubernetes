@@ -102,7 +102,24 @@ v1-web-xk9sk   1/1     Running   0          3m36s
 
 ## Scale Up
 * If we ever want to scale up our application, it will be very easy now.
-* There are many ways you can scale your pods, but I will use `kubectl apply`.
+* There are many ways you can scale your pods.
+
+### `kubectl scale`
+* `kubectl scale rs --replicas=@number @rs_name`
+* Using this command you can quickly change the numbe of replicas you want to run.
+
+```bash
+➜ k scale replicaset --replicas=5 replicaset-matching-label
+```
+
+### `kubectl edit`
+* You can also use `kubectl edit rs @rs_name` and edit the yaml template to scale your app.
+
+```bash
+k edit replicasets.apps replicaset-matching-label
+```
+
+### `kubectl apply`
 * Let's update the number of replicas we want in our yaml file. Set it to 10.
 
 ```yaml
@@ -129,11 +146,11 @@ v1-web-xk9sk   1/1     Running   0          6m48s
 
 ## Scale Down
 * Scaling down is super easy as well.
-* Just update the replicas value. Set it to 3 for now.
+* Just update the replicas value. Set it to 3 for now. (I am using `kubectl apply`)
 
 ```yaml
 spec:
-  replicas: 2
+  replicas: 3
 ```
 * After that run: `kubectl apply -f replicaset.yaml`. You will see pods are deleted.
 
