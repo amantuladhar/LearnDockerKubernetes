@@ -1,8 +1,8 @@
 ---
-category: Kubernetes ReplicaSets
+category: ReplicaSets
 ---
 
-# Kubernetes `ReplicaSets`
+# `ReplicaSets`
 
 * We now know how to create pods, i.e manually.
 * But in real world we never want to create a pod manually.

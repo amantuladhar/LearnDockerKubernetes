@@ -1,8 +1,8 @@
 ---
-category: Kubernetes Services
+category: Services
 ---
 
-# Kubernetes Services
+# Services
 
 * Now we know how to mange Pods using `ReplicaSet`.
 * You know that `ReplicaSet` make sure that desired number of Pods are always alive.
