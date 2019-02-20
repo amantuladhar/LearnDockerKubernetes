@@ -11,6 +11,7 @@ category: Kubernetes ReplicaSets
 * A `ReplicaSet` ensures the pods it manages are always kept running. 
 * If the pod disappears for any reason, `ReplicaSet` notices the missing pod and creates a replacement pod.
 
+---
 ## How does `ReplicaSets` work?
 * `ReplicaSet` constantly monitors the list of running pods.
 * Label selector is used to filter the pods that `ReplicaSet` manages.
@@ -18,6 +19,7 @@ category: Kubernetes ReplicaSets
 * If too few such pods are running, it creates new replicas from a pod template. 
 * If too many such pods are running, it removes the excess replicas.
 
+---
 ## Defining `ReplicaSet` yaml file
 
 ```yaml
@@ -52,6 +54,8 @@ spec:                           # 6
           ports:                                                                   
             - containerPort: 8080                                                                   
 ```
+
+---
 * `#1`: `ReplicaSet` are defined under `apiVersion` **apps/v1**.
 * `#2`: We are setting our resource type to `ReplicaSet`.
 * `#3`: Defines the metadata information for our resource.
@@ -64,7 +68,8 @@ spec:                           # 6
   * We also have `matchExpression` which is more expressive. (More on this later).
 * `template` is the template for the pod our ReplicaSet manages. When starting the ReplicaSet or adding new Pods, it will use this template to start the Pod.
   * Notice: All properties below `template` is same as Pod `yaml` file we defined before.
-  
+ 
+--- 
 ## Create `ReplicaSet`
 * To create a `ReplicaSet` we simply use `kubectl create -f replicaset.yaml`.
 
@@ -73,6 +78,7 @@ spec:                           # 6
 replicaset.apps/v1-web created
 ```
 
+--- 
 ## Listing `ReplicaSet`.
 * To list the `ReplicaSet` we use same command like before but different resource.
 * `kubectl get replicaset` or `kubectl get rs`.
@@ -88,6 +94,7 @@ NAME     DESIRED   CURRENT   READY   AGE
 v1-web   3         3         3       44s
 ``` 
 
+---
 ### List the pods
 * If you list the running pods, you will see you have three pods running.
 
@@ -100,10 +107,12 @@ v1-web-xk9sk   1/1     Running   0          3m36s
 ```
 * `po` is short form for `pods`.
 
+---
 ## Scale Up
 * If we ever want to scale up our application, it will be very easy now.
 * There are many ways you can scale your pods.
 
+---
 ### `kubectl scale`
 * `kubectl scale rs --replicas=@number @rs_name`
 * Using this command you can quickly change the numbe of replicas you want to run.
@@ -112,6 +121,7 @@ v1-web-xk9sk   1/1     Running   0          3m36s
 ➜ kubectl scale rs --replicas=5 v1-web
 ```
 
+---
 ### `kubectl edit`
 * You can also use `kubectl edit rs @rs_name` and edit the yaml template to scale your app.
 
@@ -119,6 +129,7 @@ v1-web-xk9sk   1/1     Running   0          3m36s
 kubectl edit rs v1-web
 ```
 
+---
 ### `kubectl apply`
 * Let's update the number of replicas we want in our yaml file. Set it to 10.
 
@@ -144,6 +155,7 @@ v1-web-xctpn   1/1     Running   0          8s
 v1-web-xk9sk   1/1     Running   0          6m48s
 ```
 
+---
 ## Scale Down
 * Scaling down is super easy as well.
 * Just update the replicas value. Set it to 3 for now. (I am using `kubectl apply`)
@@ -154,6 +166,7 @@ spec:
 ```
 * After that run: `kubectl apply -f replicaset.yaml`. You will see pods are deleted.
 
+---
 ## Using `matchExpression`
 * We saw how `matchLabels` works in previous example.
 * But `ReplicaSet` can have more expressive label selector than just matching key and value pairs.
@@ -195,6 +208,7 @@ v1-web-xk9sk   1/1     Running   0          31m   v1        prod
 * How do we tell `ReplicaSet` to manage Pods with label env=dev and env=prod.
 * How to not create extra Pod?
 
+---
 ### Using Operator
 * Let's update our `ReplicaSet` label selector to
 

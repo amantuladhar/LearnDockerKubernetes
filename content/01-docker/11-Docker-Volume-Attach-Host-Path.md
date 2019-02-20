@@ -3,6 +3,7 @@ category: Docker Volumes
 ---
 # Mount host directory into container.
 
+---
 ## Mount host path
 * `-v` has yet another major use case, which can only be accomplished throught `-v` option.
 * Mount the host directory into container.

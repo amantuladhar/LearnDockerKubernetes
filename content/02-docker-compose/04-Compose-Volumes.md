@@ -1,5 +1,5 @@
 ---
-category: Volumes
+category: Compose Volumes
 ---
 # Docker Compose Volumes
 
@@ -47,6 +47,7 @@ volumes:
   - datavolume:/var/lib/mysql
 ```
 
+---
 ## Named volumes
 * If you want to use named volume in docker-compose, you don't need to create one yourself.
 * You have `volumes` root property where you can define your volumes.

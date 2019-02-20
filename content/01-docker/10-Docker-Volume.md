@@ -5,6 +5,7 @@ category: Docker Volumes
 
 * Volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
 
+---
 ## Why do we need volume?
 * To understand why we need volumes let’s go back to simple image `busybox`.
 * `docker run -it busybox`
@@ -15,6 +16,7 @@ category: Docker Volumes
   * We should not depend on starting same container.
 * How do we persist changes, so that when we run new container we see that file? 
   
+---
 ## `-v @name:@path`
 * The most direct way is declare a volume at run-time with the `-v @name:@path` flag.
 * `@name` is name of the volume.

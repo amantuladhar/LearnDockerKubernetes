@@ -3,6 +3,7 @@ category: Docker Compose
 ---
 # Docker Compose
 
+---
 ## What is docker compose?
 * `docker compose` is tool for defining and running complex applications with Docker. 
 * With Compose, we define a **multi-container application** in a single file.
@@ -12,6 +13,7 @@ category: Docker Compose
 
 > Docker Compose works in the scope of a single host, where Kubernetes works on multi cluster environment.
 
+---
 ## Simple compose file
 * This is what a simple compose file looks like.
 ```yaml

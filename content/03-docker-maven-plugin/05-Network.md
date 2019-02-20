@@ -1,11 +1,12 @@
 ---
-category: Networks
+category: Maven Plugin Networks
 ---
 
-# Networks
+# Maven Plugin Networks
 
 > For this chapter we will use [Simple App With DB - from `plugin-db-initial`](https://github.com/amantuladhar/DockerKubernetesFiles/tree/plugin-db-initial) branch.
 
+---
 ## Auto Create Network
 * When dealing with network, we may need to create a network.
 * If we create a custom network, we need to create it manually.
@@ -20,6 +21,7 @@ category: Networks
 </properties>
 ``` 
 
+---
 ## Create a network
 * To create a network we use `<network>` tag.
 * `<network>` has few children.
@@ -68,7 +70,7 @@ category: Networks
 </image>
 
 ```
-
+---
 * To add your container in an network, you use `<network>` tag inside `<run>` tag.
 * `<mode>` can accept multiple value
     * `bridge` : Bridged mode with the default Docker bridge (default)
@@ -81,6 +83,7 @@ category: Networks
 * **Notice:** we are using same network on both image configuration. But on **mysql** part we are giving alias.
 * If you build and run the app, and you app will just work. 
 
+---
 ## mode `container`
 * Using mode `container` you can access your network container using `localhost`.
 * But remember you have one big limitation, you cannot combine this with `<ports>`.
@@ -121,6 +124,8 @@ category: Networks
     </image>
 </images>
 ```
+
+---
 * We are still using `<network>` with `mode` **custom** on our web app side.
 * On database side, we are using `mode` **container** but instead of network name we are using our web app **name**.
 * We are using container **alias** here but you could have used **name** as well.

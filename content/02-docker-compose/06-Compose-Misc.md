@@ -1,7 +1,7 @@
 ---
-category: Healthcheck and Restart Policies
+category: Compose Healthcheck and Restart Policies
 ---
-# Healthcheck and Restart Policies
+# Compose Healthcheck and Restart Policies
 
 ## `restart`
 * `restart` property accepts the same values we learned before.
@@ -19,6 +19,7 @@ services:
 ...
 ```
 
+---
 ## healthcheck
 * We also have healthcheck property if we want to override the healthcheck of Image.
 

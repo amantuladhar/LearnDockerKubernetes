@@ -1,5 +1,5 @@
 ---
-category: Hands On With Docker Command 
+category: Basic Docker Commands 
 ---
 # Attaching Container Terminal To Host Terminal
 
@@ -15,6 +15,7 @@ category: Hands On With Docker Command
 * If default command in image is not **shell**, we can pass shell as `@argument`.
 * `docker run -it busybox /bin/sh`
 
+---
 ## `docker container exec`
 * `docker container exec` is used to execute command inside running container.
 * `docker container exec @id @command`
@@ -34,7 +35,7 @@ PID   USER     TIME  COMMAND
 
 ```
 
-
+---
 ## Attach Terminal When Start The Stopped Container
 ### `docker start -ia @name/@id`
 * If you want to attach the terminal, the option is bit different i.e `-ia`

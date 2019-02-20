@@ -1,5 +1,5 @@
 ---
-category: Multiple Services
+category: Compose - Define Multiple Services
 ---
 # Define Multiple Service In Compose File
 

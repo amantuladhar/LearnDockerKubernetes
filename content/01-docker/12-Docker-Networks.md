@@ -24,7 +24,6 @@ category: Docker Networks
 * Consider scenario where our app needs to talk with container that is running **mysql**.
 
 ---
-
 ## Networks Basics
 * We have `docker `**`network`** command to issue instruction related to networks.
 * If you do `docker network list`, you will see three networks is already created for you.
@@ -35,7 +34,6 @@ category: Docker Networks
 * Default driver for network is `bridge`.
 
 ---
-
 ## `docker network create @name`
 * To create a network you just issue `docker network create @name`.
 
@@ -43,7 +41,6 @@ category: Docker Networks
 ➜ docker network create myNet
 ```
 * This will create network with name `myNet` with driver `bridge`.
-
 
 ---
 ## `--net=@networkName` option
@@ -74,6 +71,7 @@ category: Docker Networks
 * If you do `curl` on `myApp:8080/test` it will work.
 * Docker has builtin DNS servier that converts container name to it's IP.
 
+---
 ## `--net=`**`container:name`**
 * `--net` has one more syntax i.e `--net=container:name`.
 * If you use this syntax, you will be able to use `localhost` instead of `containerName` to connect to it.

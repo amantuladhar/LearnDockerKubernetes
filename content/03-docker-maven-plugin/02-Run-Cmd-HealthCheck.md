@@ -1,5 +1,5 @@
 ---
-category: Run Command, Restart Polices and HealthCheck
+category: Maven Plugin Run Command, Restart Polices and HealthCheck
 ---
 
 # Run Command, Restart Polices and HealthCheck

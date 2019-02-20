@@ -1,8 +1,8 @@
 ---
-category: Volumes
+category: Maven Plugin Volumes
 ---
 
-# Volumes
+# Maven Plugin Volumes
 
 * To mount the volume we have `<volumes>` tag.
 * `<volumes>` tag has children tag `<from>` and `<bind>`.

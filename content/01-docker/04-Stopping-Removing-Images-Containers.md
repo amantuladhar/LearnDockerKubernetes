@@ -1,5 +1,5 @@
 ---
-category: Hands On With Docker Command 
+category: Basic Docker Commands 
 ---
 # Removing Containers and Images
 

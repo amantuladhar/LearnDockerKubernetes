@@ -1,8 +1,8 @@
 ---
-category: Running Multiple Container
+category: Maven Plugin Running Multiple Container
 ---
 
-# Running Multiple Container
+# Maven Plugin Running Multiple Container
 
 * With **fabric8/docker-maven-plugin** we can run multiple images.
 * Let's run `mysql`, but we won't run the app that talk with this database (for now).

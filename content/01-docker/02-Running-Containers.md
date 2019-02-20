@@ -1,7 +1,7 @@
 ---
-category: Hands On With Docker Command 
+category: Basic Docker Commands 
 ---
-# Basic `Docker` Commands
+# Basic Docker Commands
 
 ## Running container
 
@@ -32,6 +32,7 @@ This message shows that your installation appears to be working correctly.
 * When container is started, it will execute a command.
 * Command is defined in image itself. We will talk about this later.
 
+---
 ## Listing local images
 
 ### `docker image list`
@@ -45,6 +46,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 hello-world         latest              fce289e99eb9        6 weeks ago         1.84kB
 ```
 
+---
 ## Listing container
 * When we ran the image with `docker run` it creates a container. Duh!! it is the defination of container.
 * How can you see list of your container?
@@ -74,6 +76,7 @@ bb11cd638c55        hello-world         "/hello"            9 minutes ago       
 ```
 * Now we are able to see our container in the list.
 
+---
 ## Override default image command
 * After `docker run @image` we can pass **@command** and **@argument** it accepts.
 * Like `docker run @image @command @arguments`.
@@ -93,7 +96,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 d7acdce83ad6        busybox             "sleep 5000"        23 seconds ago      Up 21 seconds                           gallant_hodgkin
 
 ```
-
+---
 ## Stopping running continers
 
 ### `docker container stop @id / @name`
@@ -102,6 +105,7 @@ d7acdce83ad6        busybox             "sleep 5000"        23 seconds ago      
 * If you list the image again (don't forget `--all`) you will see updated status for the container.
 * If you pass `space` separated `@id / @name` to stop more than one container.
 
+---
 ## Running container in background
 * When we ran `docker run busybox sleep 5000`, it blocked out terminal.
 * If you don't want that to happen, we have an option to run the container in background mode.
@@ -112,6 +116,7 @@ d7acdce83ad6        busybox             "sleep 5000"        23 seconds ago      
 * `docker run -d busybox sleep 5000`
 * If you run above command, it will echo container id and resume it's process in background.
 
+---
 ## Start the stopped container
 ### `docker start @name/@id`
 * It will start the existing container instaed of createing new one.

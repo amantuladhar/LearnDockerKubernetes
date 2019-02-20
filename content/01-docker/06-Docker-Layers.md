@@ -14,7 +14,7 @@ category: Docker Layers
 * When you build your image before, you also created lots of images.
 * `docker build . -t docker-kubernetes:dockerfile-basics`                
 
-```bash
+```text
                             +---------------------------------+
              +------------> |          6e384ad670e7           |
              |              | CMD ["java", "-jar", "app.jar"] |

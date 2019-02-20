@@ -13,9 +13,10 @@ category: Dockerfile Basics
 * `Dockerfile` is just a convienent way to build your docker images.
 * Default file name for `Dockerfile` is `Dockerfile`.
 
-
+---
 ## `Dockerfile` Basics
 
+---
 ### `FROM`
 * `FROM @image:@tag`
 * `FROM` is the first instruction in `Dockerfile`.
@@ -29,6 +30,7 @@ FROM openjdk:8-jre-alpine
 
 ```
 
+---
 ### `docker build`
 * Even if you have single instruction `FROM` you can build your image.
 * It is as easy as executing `docker build @contextPath -t @name:@tag`.
@@ -56,6 +58,7 @@ Successfully tagged amantuladhar/docker-kubernetes:dockerfile-basics
 * Run `docker image list` and you will see your image on the list
 * (Psst!! You can go inside your image an play around with it)
 
+---
 ### WORKDIR
 * `WORKDIR /path`
 * Sets starting point from where you want to execute subsequent instructions.
@@ -69,6 +72,7 @@ FROM openjdk:8-jre-alpine
 WORKDIR /myApp
 ```
 
+---
 ### COPY
 * `COPY @source @destination`
 * Copies files from source to container file system
@@ -106,7 +110,9 @@ Successfully built 63722ad415fe
 Successfully tagged amantuladhar/docker-kubernetes:dockerfile-basics
 
 ```
-* Running you app inside container
+
+---
+### Running your app
 
 ```bash
 ➜ docker run -it amantuladhar/docker-kubernetes:dockerfile-basics   
@@ -130,13 +136,14 @@ app.jar
 
 * You still can't access the app from outside as you haven't asked docker to export the port the app is listening to.
 
+---
 ### ADD
 * `ADD @source @destination`
 * Exactly as `COPY`
 * Has few features like, archive extractions. (Like extracting arhieve automatically)
 * Best practice is to use `COPY` if you don’t need those additional features.
 
-
+---
 ### EXPOSE
 * `EXPOSE @port`
 * `EXPOSE` tells Docker the running container listens on specific network ports. 
@@ -152,6 +159,7 @@ COPY ["target/*.jar", "./app.jar"]
 
 ```
 
+---
 ### Port Publishing
 * If you want to access your app from the host (outside the container), you need to publish the port container listens to.
 * To do that we have `-p @hostPort:@containerPort` option.
@@ -186,6 +194,7 @@ Transfer-Encoding: chunked
 
 ```
 
+---
 ### RUN
 * `RUN @command`
 * `RUN` is central executing instruction for `Dockerfile`.
@@ -222,6 +231,7 @@ fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/community/x86_64/APKINDEX.tar.gz
 ...
 ```
 
+---
 ### ENTRYPOINT
 * The `ENTRYPOINT` specifies a command that will always be executed when the container starts.
 * Docker has a default `ENTRYPOINT` which is `/bin/sh -c`
@@ -244,6 +254,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 * You app will run, you didn't needed to go inside the container and execute the command yourself.
 * `-p 9090:8080` was added so that you can access your app from host.
 
+---
 ### CMD
 * `CMD` also specifies a command that will execute when container starts.
 * The `CMD` specifies the arguments that will be fed to the `ENTRYPOINT`.

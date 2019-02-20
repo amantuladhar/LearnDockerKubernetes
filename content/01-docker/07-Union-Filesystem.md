@@ -3,12 +3,13 @@ category: Docker Layers
 ---
 # Docker Union Filesystem
 
+---
 ## How Union Filesystem works?
 * By using the union filesystem, Docker combines all these layers into a single image entity.
 * Filesystem structure of the top layer will merge with the structure of the layer beneath. 
 * Files and directories which have the same path as in the previous layer will override those beneath.
 
-```bash         
+```text         
         +-----------------+
         |    FILE_4.txt   |----+
         +-----------------+    |
@@ -26,6 +27,7 @@ category: Docker Layers
         +-----------------+
 ```
 
+---
 ## How are layers connected? 
 * To maintain the order of layers, Docker utilizes the concept of layer IDs and pointers.
 * Each layer contains the ID and a pointer to its parent layer. 
@@ -33,7 +35,7 @@ category: Docker Layers
 * Layers are reusable and cacheable. If same kind of layers are found, docker will reuse it.
 * Reusable layers is also a reason why Docker is so lightweight in comparison to full virtual machines, which don't share anything. It is thanks to layers that when you pull an image, you eventually don't have to download all of its filesystem
  
-```bash
+```text
             +---------------------------+
             |         Layer Id          |
             |                           |

@@ -1,12 +1,13 @@
 ---
-category: Networking
+category: Compose Network
 ---
-# Docker Compose Networking
+# Compose Network
 
 * Networks are also easy concept, you won't learn anything new here.
 * But at the end you will be creating a app that talks with database to store its values.
 * And most of all database values will be persisted for multiple runs.
 
+---
 ## Setting Up Network
 * If you were paying attention to logs when we run our services, you saw that `docker-compose` creates a `default` network for us.
 * So all **services** defined on same file are already in same (default ) network.
@@ -33,6 +34,7 @@ services:
 * I believe this is nothing new, we already did this before.
 * Only difference is that, now we are using compose and it's convenience.
 
+---
 ### Testing Network
 * Attach pseudo-tty of `myTester`.
 
@@ -51,6 +53,7 @@ services:
 }
 ```
 
+---
 ## Named Network
 * While relying on default network works, you may want to name your network yourself. You may even want to create multiple networks on a single compose file.
 * To achieve that we have **networks** properties.
@@ -86,6 +89,7 @@ networks:                                  # 1
 * `#4` Name of networks **service** belongs to. You can add multiple networks
 * You can check if two containers can talk with each other like before.
 
+---
 ## `network_mode`
 * Which help of network mode we can define which network mode to operate on.
 * Remember `--net=container:@name` syntax. `network_mode` can achieve something like this.
@@ -129,6 +133,7 @@ services:
 } 
 ```
 
+---
 ## Web App With Database
 * You now have knowledge of how `docker-compose` and its component works.
 * Let's spin up a real app like scanario instead of mock tests.

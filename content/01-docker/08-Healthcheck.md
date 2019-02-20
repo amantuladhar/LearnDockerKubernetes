@@ -3,6 +3,7 @@ category: Docker Healthcheck
 ---
 # Docker Healthcheck
 
+---
 ## What is `HEALTHCHECK`
 * The `HEALTHCHECK` instruction tells Docker how to test a container to check that it is still working. 
 * There could be a scenario where our application process is still running, but may not respond to our request.
@@ -11,6 +12,7 @@ category: Docker Healthcheck
 * Note: Kubernetes doesn't support this `HEALTHCHECK` instruction. Kubernetes has its own way to checking if containers are healthy.
 * When a container has a `HEALTHCHECK` specified, it has a health status in addition to its normal status. 
 
+---
 ### HEALTHCHECK
 * The `HEALTHCHECK` instruction can be used in two forms.
 * `HEALTHCHECK [OPTIONS] CMD command`. Which checks container health by running a command inside the container.
@@ -45,22 +47,26 @@ docker-kubernetes:dockerfile-basics   Up XX seconds (healthy)
 ```
 * We will play around with `HEALTHCHECK` more, but first let's learn about different options `HEALTHCHECK` supports. 
 
+---
 ### `--interval`
 * `--interval=@duration`
 * Default duration time is 30s
 * This configures time `HEALTHCHECK` needs to wait before it runs next `HEALTHCHECK CMD`.
 
+---
 ### `--timeout`
 * `--timeout=@duration`
 * Default timeout is 30s
 * This configures the time it should take a `HEALTHCHECK CMD` to finish.
 * If a single `CMD` run takes longer than timeout seconds then the check is considered to have failed.
 
+---
 ### `--retries`
 * `--retries=@numberOfRetries`
 * Default value for retry is 3.
 * This configures how many times `HEALTHCHECK` needs to fail before it determines out container is unhealthy.
 
+---
 ### `--start-period`
 * `--start-period=@duration`
 * Default value for start period duration is 0s.
@@ -69,7 +75,6 @@ docker-kubernetes:dockerfile-basics   Up XX seconds (healthy)
 * Basically it will run our first `HEALTHCHECK CMD` after time specified.
 
 ---
-
 ### Playing with HEALTHCHECK
 * Let's update our `HEALTHCHECK` instruction.
 ```dockerfile

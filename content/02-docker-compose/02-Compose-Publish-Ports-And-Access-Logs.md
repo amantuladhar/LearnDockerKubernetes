@@ -1,7 +1,7 @@
 ---
-category: Ports and Logs
+category: Compose - Port Publishing and Logs
 ---
-# Publising Ports And Accessing Service Logs
+# Compose - Port Publishing and Logs
 
 ## Publishing Ports
 * We made our app run with single command, but we were not able to access them.

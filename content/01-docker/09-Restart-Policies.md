@@ -13,15 +13,18 @@ category: Restart Policies
   * `always`
   * `on-failure`
   * `unless-stopped`
-  
+
+---  
 ## `no`
 * The no policy is the default restart policy and simply will not restart a container under any case.
 
+---  
 ## `always`
 * If we wanted the container to be restarted no matter what exit code the command has, we can use the `always` restart policy. 
 * The restart policy will always restart the container. 
 * Whenever the Docker service is restarted, containers using the always policy will also be restarted.
 
+---  
 ## `on-failure`
 * Restart your container whenever it exits with a non-zero exit status and not restart otherwise. 
 * You can optionally provide a number of times for Docker to attempt to restart the container.
@@ -30,12 +33,12 @@ category: Restart Policies
 * This is an increasing delay; it starts with the value of 100 milliseconds, then Docker will double the previous delay.
 * If a container is successfully restarted, the delay is reset to the default value of 100 milliseconds
 
+---  
 ## `unless-stopped`
 * Again, similar to always, if we want the container to be restarted regardless of the exit code, we can use `unless-stopped.` 
 * It will restart the container regardless of the exit status, but do not start it on daemon startup if the container has been put to a stopped state before.
 
----
-
+---  
 * If you are using the app from [Simple Spring App](https://github.com/amantuladhar/DockerKubernetesFiles/tree/dockerfile-initial), make sure you are in `dockerfile-initial` branch.
 * We have couple of REST endpoints in the app
   * `/test/` which kind of hello-world endpoint for us 
@@ -75,7 +78,7 @@ docker-kubernetes:dockerfile-basics   Restarting (1) 1 second ago
 * Now let's call `/test/exit-0`, which will end the process with zero exit code.
 * If you list the running container, you won't see it now.
 
-
+---
 ## Update restart policies of running container
 * `docker update --restart=new-policies @id/@name`
 * Where `@id/@name` is of container
