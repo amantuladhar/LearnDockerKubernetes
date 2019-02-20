@@ -100,7 +100,7 @@ spec:
 
 
 ---
-## `readyness` probe options
+## `rediness` probe options
 * Like `liveness` probe we have few options we can confiture
   * `initialDelaySeconds`: Number of seconds after the container has started before liveness probes are initiated.
   * `periodSeconds`: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
