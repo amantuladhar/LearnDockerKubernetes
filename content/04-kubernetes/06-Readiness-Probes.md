@@ -1,5 +1,5 @@
 ---
-category: ReadinessProbe Probe
+category: Readiness Probe
 ---
 
 # Rediness Probe
